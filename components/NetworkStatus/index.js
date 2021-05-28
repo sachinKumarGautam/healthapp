@@ -1,13 +1,12 @@
-// @flow
 import * as React from 'react';
 import * as styles from './styles';
 
-type Props = {};
-type State = {
-  online: boolean
-};
+// type Props = {};
+// type State = {
+//   online: boolean
+// };
 
-class NetworkStatus extends React.Component<Props, State> {
+class NetworkStatus extends React.Component {
   state = {
     online: true
   };

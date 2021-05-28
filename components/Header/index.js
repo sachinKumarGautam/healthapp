@@ -1,19 +1,20 @@
-// @flow
+/* eslint-disable react/prop-types */
+
 import * as React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import LinkList from '../LinkList';
 import { Header as StyledHeader, Img } from './styles';
 import connect from './store';
 
-type Props = {
-  pathname: string,
-  authenticated?: boolean,
-  actions: {
-    logout: Function
-  }
-};
+// type Props = {
+//   pathname: string,
+//   authenticated?: boolean,
+//   actions: {
+//     logout: Function
+//   }
+// };
 
-const Header = ({ pathname, authenticated, actions: { logout } }: Props) => (
+const Header = ({ pathname, authenticated, actions: { logout } }) => (
   <StyledHeader>
     <Img
       alt="RAN!"
@@ -27,16 +28,16 @@ const Header = ({ pathname, authenticated, actions: { logout } }: Props) => (
   </StyledHeader>
 );
 
-Header.defaultProps = {
-  authenticated: false
-};
+// Header.defaultProps = {
+//   authenticated: false
+// };
 
-Header.propTypes = {
-  pathname: PropTypes.string.isRequired,
-  authenticated: PropTypes.bool,
-  actions: PropTypes.shape({
-    logout: PropTypes.func.isRequired
-  }).isRequired
-};
+// Header.propTypes = {
+//   pathname: PropTypes.string.isRequired,
+//   authenticated: PropTypes.bool,
+//   actions: PropTypes.shape({
+//     logout: PropTypes.func.isRequired
+//   }).isRequired
+// };
 
 export default connect(Header);

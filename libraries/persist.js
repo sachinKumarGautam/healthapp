@@ -1,8 +1,7 @@
-// @flow
 import cookies from 'js-cookie';
 
 export default class persist {
-  static get ACCESS_TOKEN_KEY(): string {
+  static get ACCESS_TOKEN_KEY() {
     return 'accessToken';
   }
 
@@ -10,7 +9,7 @@ export default class persist {
     return cookies.get(persist.ACCESS_TOKEN_KEY);
   }
 
-  static async willSetAccessToken(value: string) {
+  static async willSetAccessToken(value) {
     return cookies.set(persist.ACCESS_TOKEN_KEY, value);
   }
 

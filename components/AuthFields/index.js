@@ -1,19 +1,19 @@
-// @flow
+/* eslint-disable react/prop-types */
 import * as React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Main, SubmitButton } from './styles';
 
-type Props = {
-  selectFields: string,
-  fields: Array<{ key: number, attr: { [string]: string } }>,
-  handleTouch: Function,
-  handleChange: Function,
-  handleSubmit: Function,
-  touched: boolean,
-  errors: ?{ [string]: string }
-};
+// type Props = {
+//   selectFields: string,
+//   fields: Array<{ key: number, attr: { [string]: string } }>,
+//   handleTouch: Function,
+//   handleChange: Function,
+//   handleSubmit: Function,
+//   touched: boolean,
+//   errors: ?{ [string]: string }
+// };
 
-const AuthFields = (props: Props) => {
+const AuthFields = props => {
   const {
     selectFields,
     fields,
@@ -55,14 +55,14 @@ const AuthFields = (props: Props) => {
   );
 };
 
-AuthFields.propTypes = {
-  selectFields: PropTypes.string.isRequired,
-  fields: PropTypes.array.isRequired,
-  handleTouch: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  touched: PropTypes.bool.isRequired,
-  errors: PropTypes.object.isRequired
-};
+// AuthFields.propTypes = {
+//   selectFields: PropTypes.string.isRequired,
+//   fields: PropTypes.array.isRequired,
+//   handleTouch: PropTypes.func.isRequired,
+//   handleChange: PropTypes.func.isRequired,
+//   handleSubmit: PropTypes.func.isRequired,
+//   touched: PropTypes.bool.isRequired,
+//   errors: PropTypes.object.isRequired
+// };
 
 export default AuthFields;

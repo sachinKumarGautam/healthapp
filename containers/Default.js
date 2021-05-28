@@ -1,20 +1,21 @@
-// @flow
+/* eslint-disable react/prop-types */
+
 import * as React from 'react';
 import { withRouter } from 'next/router';
 import { Helmet } from 'react-helmet';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import App from '../components/App';
 // import Header from '../components/Header';
 // import ProjectInfo from '../components/ProjectInfo';
 import NetworkStatus from '../components/NetworkStatus';
 
-type Props = {
-  title?: string,
-  router: Object,
-  children: React.Element<*>
-};
+// type Props = {
+//   title?: string,
+//   router: Object,
+//   children: React.Element<*>
+// };
 
-const Default = (props: Props) => (
+const Default = props => (
   <App>
     <Helmet>
       <title>
@@ -31,14 +32,14 @@ const Default = (props: Props) => (
   </App>
 );
 
-Default.propTypes = {
-  title: PropTypes.string,
-  router: PropTypes.object.isRequired,
-  children: PropTypes.element.isRequired
-};
+// Default.propTypes = {
+//   title: PropTypes.string,
+//   router: PropTypes.object.isRequired,
+//   children: PropTypes.element.isRequired
+// };
 
-Default.defaultProps = {
-  title: ''
-};
+// Default.defaultProps = {
+//   title: ''
+// };
 
 export default withRouter(Default);

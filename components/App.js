@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import color from 'color';
 import themeList from '../libraries/theme';
@@ -8,10 +8,10 @@ import { App as ThemedApp } from './Theme';
 
 let offlineInstalled = false;
 
-type Props = {
-  children: React.Node,
-  theme?: string
-};
+// type Props = {
+//   children: React.Node,
+//   theme?: string
+// };
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const App = ({ children, theme }: Props) => {
+const App = ({ children, theme }) => {
   const themeName = !themeList[theme] ? 'main' : theme;
   if (!themeList[themeName].helper) themeList[themeName].helper = color;
 
@@ -51,13 +51,13 @@ const App = ({ children, theme }: Props) => {
   );
 };
 
-App.defaultProps = {
-  theme: 'main'
-};
+// App.defaultProps = {
+//   theme: 'main'
+// };
 
-App.propTypes = {
-  children: PropTypes.array.isRequired,
-  theme: PropTypes.string
-};
+// App.propTypes = {
+//   children: PropTypes.array.isRequired,
+//   theme: PropTypes.string
+// };
 
 export default App;

@@ -1,22 +1,21 @@
-// @flow
 import * as React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Form, SubmitButton } from './styles';
 import { Router } from '../../routes';
 import connect from './store';
 
-type Props = {
-  mutations: {
-    createPost: Function
-  }
-};
+// type Props = {
+//   mutations: {
+//     createPost: Function
+//   }
+// };
 
-class CreateForm extends React.Component<Props, *> {
-  static propTypes = {
-    mutations: PropTypes.shape({
-      createPost: PropTypes.func.isRequired
-    }).isRequired
-  };
+class CreateForm extends React.Component {
+  // static propTypes = {
+  //   mutations: PropTypes.shape({
+  //     createPost: PropTypes.func.isRequired
+  //   }).isRequired
+  // };
 
   handleSubmit = e => {
     e.preventDefault();

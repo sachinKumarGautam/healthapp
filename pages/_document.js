@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import Helmet from 'react-helmet';
 import { ServerStyleSheet } from 'styled-components';
 import AppIcons from '../components/AppIcons';
@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html lang="en" {...this.helmetHtmlAttrComponents()}>
+      <Html lang="en" {...this.helmetHtmlAttrComponents()}>
         <Head>
           <meta name="robots" content="index,follow" />
           <meta httpEquiv="expires" content="10800" />
@@ -50,7 +50,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

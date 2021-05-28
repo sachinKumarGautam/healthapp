@@ -1,61 +1,60 @@
-// @flow
+/* eslint-disable react/prop-types */
+
 import * as React from 'react';
 import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import { Provider as ReduxProvider } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import 'isomorphic-fetch';
 import cookies from 'next-cookies';
 import apolloClient from './apolloClient';
 import reduxStore from './reduxStore';
 import persist from './persist';
 
-type Props = {
-  headers: HeadersType,
-  accessToken?: string,
-  router: Object,
-  apolloState: Object,
-  reduxState: Object
-};
+// type Props = {
+//   headers: HeadersType,
+//   accessToken?: string,
+//   router: Object,
+//   apolloState: Object,
+//   reduxState: Object
+// };
 
-type Context = {
-  pathname: string,
-  query: Object,
-  asPath: string,
-  req?: {
-    headers?: Object
-  },
-  res?: Object,
-  jsonPageRes?: Object,
-  err?: Object
-};
+// type Context = {
+//   pathname: string,
+//   query: Object,
+//   asPath: string,
+//   req?: {
+//     headers?: Object
+//   },
+//   res?: Object,
+//   jsonPageRes?: Object,
+//   err?: Object
+// };
 
-export default (
-  Component: React.ComponentType<*>
-): React.ComponentType<Props> =>
-  class extends React.Component<Props> {
-    static propTypes = {
-      apolloState: PropTypes.object.isRequired,
-      reduxState: PropTypes.object.isRequired,
-      headers: PropTypes.object.isRequired,
-      accessToken: PropTypes.string
-    };
+export default Component =>
+  class extends React.Component {
+    // static propTypes = {
+    //   apolloState: PropTypes.object.isRequired,
+    //   reduxState: PropTypes.object.isRequired,
+    //   headers: PropTypes.object.isRequired,
+    //   accessToken: PropTypes.string
+    // };
 
     static defaultProps = {
       accessToken: ''
     };
 
-    constructor(props: Props) {
+    constructor(props) {
       super(props);
       this.apolloClient = apolloClient({}, '', this.props.apolloState);
       this.reduxStore = reduxStore(this.props.reduxState);
     }
 
-    static async getInitialProps(ctx: Context) {
+    static async getInitialProps(ctx) {
       let apolloState = {};
       let serverState = {};
 
       const headers = ctx.req ? ctx.req.headers : {};
-      const token: string = cookies(ctx)[persist.ACCESS_TOKEN_KEY];
+      const token = cookies(ctx)[persist.ACCESS_TOKEN_KEY];
 
       const props = {
         router: {
@@ -98,9 +97,9 @@ export default (
       };
     }
 
-    apolloClient: Object;
+    // apolloClient: Object;
 
-    reduxStore: Object;
+    // reduxStore: Object;
 
     render() {
       return (
