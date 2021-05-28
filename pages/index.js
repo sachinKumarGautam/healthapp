@@ -11,6 +11,7 @@
 // ));
 
 // @flow
+
 import * as React from 'react';
 import HomeComp from '../components/Home';
 import withData from '../libraries/withData';
