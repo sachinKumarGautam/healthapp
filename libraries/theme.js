@@ -34,14 +34,25 @@ themeList.main = {
     center: 'auto'
   },
   colors: {
-    main: '#22BAD9',
-    success: '#5cb85c',
-    warn: '#ffc067',
+    main: '#da7f8f',
+    success: '#ffb26b',
+    warn: '#ffb26b',
     error: '#d9534f',
-    background: '#ffffff',
-    text: '#000000',
-    textAlt: '#ffffff'
+    background: '#F8F9FB',
+    text: '#606f7c',
+    textAlt: '#ffffff',
+    grey1: '#606f7c',
+    grey2: '#7b8794'
   }
+  // colors: {
+  //   main: '#22BAD9',
+  //   success: '#5cb85c',
+  //   warn: '#ffc067',
+  //   error: '#d9534f',
+  //   background: '#ffffff',
+  //   text: '#000000',
+  //   textAlt: '#ffffff'
+  // }
 };
 
 themeList.inverted = themeList.extend('main', {

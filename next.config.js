@@ -78,6 +78,12 @@ const initExport = {
     }
 
     return config;
+  },
+  images: {
+    domains: ['localhost']
+  },
+  future: {
+    webpack5: true
   }
 };
 

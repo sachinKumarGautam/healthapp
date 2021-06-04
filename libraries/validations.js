@@ -3,11 +3,11 @@
 
 export default () => {};
 
-export function isStringEmpty(text?: string) {
+export function isStringEmpty(text) {
   return !text || text === '' || text.trim() === '';
 }
 
-export function isEmail(email: string) {
+export function isEmail(email) {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 }

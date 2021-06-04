@@ -5,11 +5,10 @@ export const Main = styled.div`
   border-bottom: 1px solid #ececec;
   padding-bottom: 20px;
   margin-bottom: 20px;
-
+  padding-top: 60px;
   > h1 {
     font-size: 20px;
   }
-
   > input {
     display: block;
     margin-bottom: 10px;

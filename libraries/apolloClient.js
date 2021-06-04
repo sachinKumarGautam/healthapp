@@ -8,9 +8,9 @@ let apolloClient = null;
 
 const httpLink = createHttpLink({
   uri: 'https://api.graph.cool/simple/v1/cj7ke77fv0e9i0122pflagbvx',
-  // fetchOptions: {
-  //   mode: 'no-cors'
-  // },
+  fetchOptions: {
+    mode: 'no-cors'
+  },
   credentials: 'include'
 });
 

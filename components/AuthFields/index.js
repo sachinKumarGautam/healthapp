@@ -31,6 +31,7 @@ const AuthFields = props => {
         placeholder={field.attr.label}
         onChange={handleChange}
         onFocus={handleTouch}
+        autoComplete="false"
       />
       {errors && <div>{errors[field.attr.name]}</div>}
     </div>

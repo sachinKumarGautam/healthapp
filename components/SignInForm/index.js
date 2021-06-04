@@ -1,136 +1,119 @@
-// // @flow
-// import * as React from 'react';
-// // import PropTypes from 'prop-types';
-// import AuthFields from '../AuthFields';
-// import validate from '../AuthFields/validation';
+// @flow
+import * as React from 'react';
+import fetchData from '../../libraries/utils/api';
+// import PropTypes from 'prop-types';
+import AuthFields from '../AuthFields';
+import validate from '../AuthFields/validation';
 // import connect from './store';
 
-// // type Props = {
-// //   mutations: {
-// //     signIn: Object => Promise<Object>
-// //   },
-// //   actions: {
-// //     signIn: string => void
-// //   }
-// // };
+class SignInForm extends React.Component {
+  formFields = [
+    { key: 1, attr: { name: 'email', type: 'email', label: 'Email' } },
+    { key: 2, attr: { name: 'password', type: 'password', label: 'Password' } }
+  ];
 
-// // type State = {
-// //   errors: Object,
-// //   serverErrors: {
-// //     message?: string
-// //   },
-// //   touched: boolean,
-// //   email?: string,
-// //   password?: string
-// // };
+  state = {
+    errors: {},
+    serverErrors: {},
+    touched: false
+  };
 
-// class SignInForm extends React.Component {
-//   formFields = [
-//     { key: 1, attr: { name: 'email', type: 'email', label: 'Email' } },
-//     { key: 2, attr: { name: 'password', type: 'password', label: 'Password' } }
-//   ];
+  getServerErrors(err) {
+    if (err.graphQLErrors) {
+      const obj = {};
+      obj.message = err.graphQLErrors[0].message;
+      this.setState({
+        serverErrors: obj
+      });
+    }
+  }
 
-//   static propTypes = {
-//     mutations: PropTypes.shape({
-//       signIn: PropTypes.func.isRequired
-//     }).isRequired,
-//     actions: PropTypes.shape({
-//       signIn: PropTypes.func.isRequired
-//     }).isRequired
-//   };
+  handleTouch = () => {
+    this.setState({ touched: true });
+  };
 
-//   state = {
-//     errors: {},
-//     serverErrors: {},
-//     touched: false
-//   };
+  handleChange = e => {
+    const fieldValue = e.currentTarget.value;
+    const fieldName = e.currentTarget.name;
+    const obj = {};
+    obj[fieldName] = fieldValue;
+    this.setState(obj);
+  };
 
-//   getServerErrors(err) {
-//     if (err.graphQLErrors) {
-//       const obj = {};
-//       obj.message = err.graphQLErrors[0].message;
-//       this.setState({
-//         serverErrors: obj
-//       });
-//     }
-//   }
+  handleSubmit(e, valuesPack) {
+    console.log('ddd');
+    e.preventDefault();
 
-//   handleTouch = () => {
-//     this.setState({ touched: true });
-//   };
+    // reset state
+    this.setState({
+      errors: {},
+      serverErrors: {}
+    });
 
-//   handleChange = () => {
-//     const fieldValue = e.currentTarget.value;
-//     const fieldName = e.currentTarget.name;
-//     const obj = {};
-//     obj[fieldName] = fieldValue;
-//     this.setState(obj);
-//   };
+    const handleValidate = validate(valuesPack);
 
-//   handleSubmit(e, valuesPack) {
-//     e.preventDefault();
+    if (handleValidate.touched) {
+      this.setState({ touched: handleValidate.touched });
+    }
+    if (handleValidate.errors) {
+      return this.setState({ errors: handleValidate.errors });
+    }
 
-//     // reset state
-//     this.setState({
-//       errors: {},
-//       serverErrors: {}
-//     });
+    const body = {
+      email: '1schn9891@gmail.com',
+      password: '1234'
+    };
 
-//     const handleValidate = validate(valuesPack);
+    fetchData('http://localhost:4000/signup', 'POST', body).then(data =>
+      console.log('data', data)
+    );
 
-//     if (handleValidate.touched) {
-//       this.setState({ touched: handleValidate.touched });
-//     }
-//     if (handleValidate.errors) {
-//       return this.setState({ errors: handleValidate.errors });
-//     }
+    // this.props.mutations
+    //   .signIn(valuesPack)
+    //   .then((response: { data: { signinUser: { token: string } } }) => {
+    //     if (response.data) {
+    //       this.props.actions.signIn(response.data.signinUser.token);
+    //     }
+    //   })
+    //   .catch((err: { graphQLErrors?: Array<{ message: string }> }) => {
+    //     this.getServerErrors(err);
+    //   });
+  }
 
-//     this.props.mutations
-//       .signIn(valuesPack)
-//       .then((response: { data: { signinUser: { token: string } } }) => {
-//         if (response.data) {
-//           this.props.actions.signIn(response.data.signinUser.token);
-//         }
-//       })
-//       .catch((err: { graphQLErrors?: Array<{ message: string }> }) => {
-//         this.getServerErrors(err);
-//       });
-//   }
+  render() {
+    const fields = this.formFields;
+    // Packing all the necessary auth field states
+    const valuesPack = {};
 
-//   render() {
-//     const fields = this.formFields;
-//     // Packing all the necessary auth field states
-//     const valuesPack = {};
+    fields.map(x => {
+      const y = x.attr.name;
+      if (this.state[y]) {
+        valuesPack[y] = this.state[y];
+      }
+      return valuesPack;
+    });
 
-//     fields.map(x => {
-//       const y: string = x.attr.name;
-//       if (this.state[y]) {
-//         valuesPack[y] = this.state[y];
-//       }
-//       return valuesPack;
-//     });
+    return (
+      <div>
+        <AuthFields
+          handleSubmit={e => {
+            this.handleSubmit(e, valuesPack);
+          }}
+          handleChange={this.handleChange}
+          fields={fields}
+          errors={this.state.errors}
+          touched={this.state.touched}
+          handleTouch={this.handleTouch}
+          selectFields="signinFields"
+        />
+        <br />
+        <div>
+          {Object.keys(this.state.errors).length === 0 &&
+            this.state.serverErrors.message}
+        </div>
+      </div>
+    );
+  }
+}
 
-//     return (
-//       <div>
-//         <AuthFields
-//           handleSubmit={(e: SyntheticEvent<HTMLButtonElement>) => {
-//             this.handleSubmit(e, valuesPack);
-//           }}
-//           handleChange={this.handleChange}
-//           fields={fields}
-//           errors={this.state.errors}
-//           touched={this.state.touched}
-//           handleTouch={this.handleTouch}
-//           selectFields="signinFields"
-//         />
-//         <br />
-//         <div>
-//           {Object.keys(this.state.errors).length === 0 &&
-//             this.state.serverErrors.message}
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default connect(SignInForm);
+export default SignInForm;

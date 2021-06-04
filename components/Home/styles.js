@@ -2,12 +2,14 @@ import styled from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Home = styled.div`
-  border: 1px solid red;
   padding: 5px;
   width: 100%;
+  margin-to: 18px;
   > span {
-    color: red;
+    color: Black;
     font-weight: bold;
+    font-size: 24px;
+    margin-top: 18px;
   }
 `;
 
@@ -36,5 +38,5 @@ export const Card = styled.div`
   border: 1px solid grey;
   border-radius: 12px;
   padding: 10px;
-  margin: 10px 0;
+  margin: 38px 0;
 `;

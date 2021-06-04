@@ -1,22 +1,22 @@
-import { Home as StyledHome, Nav, Card } from './styles';
+import { Home as StyledHome } from './styles';
 import connect from './store';
+import Card from '../shared/cardDefault';
+import Footer from '../shared/footer';
 
 const Home = () => (
-  <StyledHome>
-    <span>Welcome to health App</span>
-    <div>
-      <Card>Hey this is a awesome fact about covid</Card>
-      <Card>Hey this is a awesome fact about covid</Card>
-      <Card>Hey this is a awesome fact about covid</Card>
-      <Card>Hey this is a awesome fact about covid</Card>
-      <Card>Hey this is a awesome fact about covid</Card>
-    </div>
-    <Nav>
-      <div>Home</div>
-      <div>Chats</div>
-      <div>Profile</div>
-    </Nav>
-  </StyledHome>
+  <>
+    <StyledHome>
+      <span>Welcome to health App</span>
+      <div>
+        <Card>Hey this is a awesome fact about covid</Card>
+        <Card>Hey this is a awesome fact about covid</Card>
+        <Card>Hey this is a awesome fact about covid</Card>
+        <Card>Hey this is a awesome fact about covid</Card>
+        <Card>Hey this is a awesome fact about covid</Card>
+      </div>
+    </StyledHome>
+    <Footer />
+  </>
 );
 
 export default connect(Home);
