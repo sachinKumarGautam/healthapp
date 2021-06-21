@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
 
-import * as React from 'react';
-import { withRouter } from 'next/router';
-import { Helmet } from 'react-helmet';
+import * as React from "react";
+import { withRouter } from "next/router";
 // import PropTypes from 'prop-types';
-import App from '../components/App';
-import Header from '../components/shared/header';
+// import App from '../components/App';
+// import Header from '../components/shared/header';
 // import ProjectInfo from '../components/ProjectInfo';
-import NetworkStatus from '../components/NetworkStatus';
+import NetworkStatus from "../components/NetworkStatus";
 
 // type Props = {
 //   title?: string,
@@ -15,24 +14,11 @@ import NetworkStatus from '../components/NetworkStatus';
 //   children: React.Element<*>
 // };
 
-const Default = props => (
-  <App>
-    <Helmet>
-      <title>
-        {props.title && props.title !== ''
-          ? `${props.title} :: RAN! React . GraphQL . Next.js Toolkit`
-          : 'RAN! React . GraphQL . Next.js Toolkit'}
-      </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    </Helmet>
-    {props.router.url.pathname !== '/' ? (
-      <Header pathname={props.router.url.pathname} />
-    ) : null}
-
-    {/* <ProjectInfo /> */}
+const Default = (props) => (
+  <div>
     {props.children}
     <NetworkStatus />
-  </App>
+  </div>
 );
 
 // Default.propTypes = {

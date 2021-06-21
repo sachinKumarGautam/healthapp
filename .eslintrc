@@ -6,7 +6,7 @@
     "es6": true
   },
   "extends": ["airbnb", "prettier", "prettier/react", "plugin:import/warnings"],
-  "plugins": ["prettier", "import"],
+  "plugins": ["prettier", "import", "react-hooks", "@babel/plugin-proposal-optional-chaining"],
   "globals": {
     "document": true,
     "window": true,
@@ -22,6 +22,8 @@
     "$Diff": true
   },
   "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": 0,
     "react/react-in-jsx-scope": 0,
     "class-methods-use-this": 0,

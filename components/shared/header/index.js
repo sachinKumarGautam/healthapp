@@ -1,13 +1,14 @@
+import { useRouter } from 'next/router';
 import { FaArrowLeft } from 'react-icons/fa';
-import Link from 'next/link';
-import Nav from './styles';
 
-const Header = () => (
-  <Nav>
-    <Link prefetch href="/" passHref>
-      <FaArrowLeft size="1.5em" />
-    </Link>
-  </Nav>
-);
-
+const Header = () => {
+  const router = useRouter();
+  return (
+    <div className="h-16 w-full fixed flex justify-start bg-white px-5 top-0 items-center">
+      <div onClick={() => router.back()}>
+        <FaArrowLeft size="1.5em" />
+      </div>
+    </div>
+  );
+};
 export default Header;

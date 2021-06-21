@@ -1,7 +1,7 @@
 // @flow
 import { isStringEmpty, isEmail } from '../../libraries/validations';
 
-export default values => {
+const Validations = values => {
   const errorsBuffer = {};
 
   Object.entries(values).forEach(([key, value]) => {
@@ -36,3 +36,5 @@ export default values => {
     touched: true
   };
 };
+
+export default Validations;

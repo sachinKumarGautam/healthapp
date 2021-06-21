@@ -1,2 +1,5 @@
 **/*{.,-}min.js
 __mocks__
+.next
+src
+*

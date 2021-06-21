@@ -11,14 +11,18 @@
 // ));
 
 // @flow
+import { useEffect } from 'react';
+import { firebaseCloudMessaging } from '../utils/webPush';
 
-import * as React from 'react';
 import HomeComp from '../components/Home';
-import withData from '../libraries/withData';
-import DefaultCon from '../containers/Default';
+// import withData from '../libraries/withData';
+// import DefaultCon from "../containers/Default";
 
-export default withData(props => (
-  <DefaultCon {...props}>
-    <HomeComp />
-  </DefaultCon>
-));
+const Home = () => {
+    useEffect(() => {
+        firebaseCloudMessaging.init();
+    }, []);
+    return <HomeComp />;
+};
+
+export default Home;

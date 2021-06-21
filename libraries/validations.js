@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 // @flow
 
-export default () => {};
+// export default () => {};
 
 export function isStringEmpty(text) {
   return !text || text === '' || text.trim() === '';

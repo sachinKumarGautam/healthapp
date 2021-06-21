@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './styles';
+// import * as styles from './styles';
 
 // type Props = {};
 // type State = {
@@ -30,11 +30,11 @@ class NetworkStatus extends React.Component {
   render() {
     return (
       <div>
-        {!this.state.online && (
+        {/* {!this.state.online && (
           <styles.Root>
             <styles.Label> Offline </styles.Label>
           </styles.Root>
-        )}
+        )} */}
       </div>
     );
   }
